@@ -67,7 +67,8 @@ export default class Regform extends Component {
                 email: this.state.email,
                 first_name: this.state.first_name,
                 last_name: this.state.last_name,
-                agree_2: this.state.agree_2
+                agree_2: this.state.agree_2,
+                funnel_name: window.location.origin,
             };
             let submitResponse = this.props.validateParams(paramsToValidate);
 
@@ -295,7 +296,7 @@ export default class Regform extends Component {
                                 onPhoneNumberChange={(status, value, countryData, number, id) => {
                                     if (value.length < 15) {
                                         this.setState({
-                                            tel: value.replace(/\s\s/g, ''),
+                                            tel: value.replace(/^\s+|\s/g, ''),
                                         })
                                     }
                                 }}
